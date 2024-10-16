@@ -1,0 +1,36 @@
+@startuml Class diagram
+
+Class MercaditoRajhbal {
+}
+
+Class Product {
+    - price
+    - brand
+    - type
+    - name
+    - amount
+}
+
+Class Client {
+    - id
+    - name
+    - phone_number
+    - mail
+    - dni
+    - address
+}
+
+Class Orders {
+    - id
+    - idCliente
+    - idProduct
+    - price
+}
+
+MercaditoRajhbal -- Product : contains
+MercaditoRajhbal -- Orders : have
+Client "realiza" -- "1..*" Orders
+Client -- "tiene" MercaditoRajhbal
+Orders -- Product : involves
+
+@enduml

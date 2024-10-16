@@ -1,0 +1,15 @@
+@startuml Sequence Diagram Client as User
+actor Client
+Client -> "System" : Enter the system
+Client -> ClientResource: Register user
+ClientResource -> ClientResource: Validate data
+ClientResource -> ClientService: Send hashed data
+ClientService -> ClientRepository: Save User
+database DB 
+ClientRepository -> DB: Persist
+DB -> ClientRepository: Persisted
+ClientRepository -> ClientService: Send persisted user
+ClientService -> ClientResource: Send persisted user
+ClientResource -> Client: Send persisted user
+
+@enduml

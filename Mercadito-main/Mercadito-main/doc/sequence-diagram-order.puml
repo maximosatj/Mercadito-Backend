@@ -1,0 +1,33 @@
+@startuml MarketClient
+actor Client
+participant Server
+database DataBase
+
+Client -> Server: Search for product
+activate Server
+Server -> DataBase: Request product information
+activate DataBase
+DataBase --> Server: Product details
+deactivate DataBase
+Server --> Client: Display details
+deactivate Server
+
+Client -> Server: Perform payment
+activate Server
+Server -> DataBase: Process payment and update inventory
+activate DataBase
+DataBase --> Server: Payment confirmation and update
+deactivate DataBase
+Server --> Client: Successful payment confirmation
+deactivate Server
+
+Client -> Server: Check order status
+activate Server
+Server -> DataBase: Query order status
+activate DataBase
+DataBase --> Server: Order status
+deactivate DataBase
+Server --> Client: Display order status
+deactivate Server
+
+@enduml

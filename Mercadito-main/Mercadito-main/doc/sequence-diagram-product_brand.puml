@@ -1,0 +1,15 @@
+@startuml Sequence Diagram ProductBrand
+actor Client
+Client -> "System" : Enter the system
+Client -> ProductBrandResource: Search for product brand
+ProductBrandResource -> ProductBrandResource: Validate data
+ProductBrandResource -> ProductBrandService: Send data
+ProductBrandService -> ProductBrandRepository: Retrieve Product Brand
+database DB 
+ProductBrandRepository -> DB: Query
+DB -> ProductBrandRepository: Product Brand data
+ProductBrandRepository -> ProductBrandService: Send product brand data
+ProductBrandService -> ProductBrandResource: Send product brand data
+ProductBrandResource -> Client: Display product brand data
+
+@enduml
